@@ -40,28 +40,49 @@ The application uses the Least Significant Bit (LSB) steganography technique.
 - Linux/Ubuntu environment or another compatible C development environment
 - A valid 24-bit BMP image
 
-### Compilation
+## ⚙️ Compilation
 
-Clone the repository:
-
-```bash
-git clone <your-repository-url>
-cd <repository-folder>
-```
-
-Compile the source files:
+Compile the C source files using GCC:
 
 ```bash
 gcc *.c
 ```
 
-### Usage
+This generates the default executable named `a.out`. If your executable is named `out`, compile using:
 
-Run the application:
-Encode
+```bash
+gcc *.c -o out
+```
+
+## 🚀 Usage
+
+### 1. Encoding a Secret Message
+
+Hide the contents of `secret.txt` inside the `beautiful.bmp` image and generate the output image `stego.bmp`.
+
+```bash
 ./out -e beautiful.bmp secret.txt stego.bmp
-DECODE
-./out -d stego.bmp output.txt
+```
+
+**Arguments:**
+- `-e`: Encoding mode
+- `beautiful.bmp`: Source BMP image
+- `secret.txt`: Text file containing the secret message
+- `stego.bmp`: Output image containing the hidden message
+
+### 2. Decoding a Secret Message
+
+Extract the hidden message from the encoded image:
+
+```bash
+./out -d stego.bmp
+```
+
+**Arguments:**
+- `-d`: Decoding mode
+- `stego.bmp`: Encoded BMP image containing the hidden message
+
+**Note:** Ensure that the source image is a supported 24-bit BMP file and that the input files exist before running the program.
 
 Follow the command-line prompts to select encoding or decoding and provide the required input files and message details.
 
